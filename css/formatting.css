@@ -1,0 +1,35 @@
+body {
+    background: rgba(4, 255, 255, 0.3);
+}
+
+nav {
+    display: block;
+    background-color: dodgerblue;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 38px 40px;
+    text-decoration: none;
+    font-size: 19px;
+    height: 100px;
+}
+
+nav a:hover {
+    background-color: lightcyan;
+    color: dodgerblue;
+}
+
+nav #logo {
+    float: left;
+    padding: 0;
+}
+
+nav #logo:hover {
+    background-color: dodgerblue;
+}
