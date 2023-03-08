@@ -3,11 +3,11 @@ body {
 }
 
 nav {
-    display: block;
     background-color: dodgerblue;
     height: 100px;
     width: 100%;
     overflow: hidden;
+    position: fixed;
 }
 
 nav a {
@@ -32,4 +32,61 @@ nav #logo {
 
 nav #logo:hover {
     background-color: dodgerblue;
+}
+
+.itemContainer {
+    margin-top: 100px;
+}
+
+.item {
+    min-width: 300px;
+    display: flex;
+    float:left;
+    width: 32%;
+    border: 3px solid rgba(60, 179, 113, 0.5);
+}
+
+.hello {
+    display: inline-block;
+    margin-right: 50%;
+    margin-left: 50%;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.log-fs {
+    width: 100px;
+    height: 115px;
+    margin: 0;
+}
+
+.log-lb {
+    display: flex;
+    width: 150px;
+    justify-content: right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.wrapper-div {
+    height: 700px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.reg-fs {
+    width: 300px;
+    height: 250px;
+    margin: 0;
+}
+
+.reg-lb {
+    display: flex;
+    width: 280px;
+    justify-content: space-between;
+    margin-right: 25px;
+    margin-left: 25px;
 }
