@@ -40,9 +40,11 @@ nav #logo:hover {
 
 .item {
     min-width: 300px;
+    min-height: 280px;
     display: flex;
     float:left;
-    width: 32%;
+    width: 32.8%;
+    /*box-sizing: border-box;*/
     border: 3px solid rgba(60, 179, 113, 0.5);
 }
 
@@ -89,4 +91,8 @@ nav #logo:hover {
     justify-content: space-between;
     margin-right: 25px;
     margin-left: 25px;
+}
+
+p {
+    text-align: justify;
 }
