@@ -34,7 +34,7 @@ nav #logo:hover {
     background-color: dodgerblue;
 }
 
-.itemContainer {
+#itemContainer {
     margin-top: 100px;
 }
 
@@ -48,7 +48,7 @@ nav #logo:hover {
     border: 3px solid rgba(60, 179, 113, 0.5);
 }
 
-.hello {
+.authentication-form {
     display: inline-block;
     margin-right: 50%;
     margin-left: 50%;
@@ -81,7 +81,7 @@ nav #logo:hover {
 
 .reg-fs {
     width: 300px;
-    height: 250px;
+    height: 400px;
     margin: 0;
 }
 
@@ -95,4 +95,19 @@ nav #logo:hover {
 
 p {
     text-align: justify;
+}
+
+.file-input-button {
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 147px;
+    height: 20px;
+}
+
+.file-input-button:hover {
+    background-color: #f5f5f5;
 }
