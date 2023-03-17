@@ -96,3 +96,9 @@ nav #logo:hover {
 p {
     text-align: justify;
 }
+.wrapper-div-maps{
+    height: 700px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
