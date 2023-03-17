@@ -101,13 +101,13 @@ nav #logo:hover {
 p {
     text-align: justify;
 }
-<<<<<<< HEAD
-.wrapper-div-maps{
+
+.wrapper-div-maps {
     height: 700px;
     align-items: center;
     display: flex;
     justify-content: center;
-=======
+}
 
 .file-input-button {
     display: inline-block;
@@ -126,5 +126,4 @@ p {
 
 h2 {
     text-shadow: 1px 1px darkgray;
->>>>>>> ca01412b78479c06d5b41dfae3d4d9e70f1cc16e
 }
