@@ -192,3 +192,21 @@ h2 {
     scale: 1;
     border-radius: 15px;
 }
+
+.cart-box{
+    display: inline-block;
+    position: relative;
+    margin-right: 20%;
+    margin-left: 5%;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
+    border: solid black 2px;
+}
+.cart-right-side{
+    position: absolute;
+    top: 40%;
+    right: 0;
+    transform: translate(-50%, -50%);
+}

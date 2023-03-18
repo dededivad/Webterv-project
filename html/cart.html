@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DD Webshop</title>
+    <title>DD Kosár</title>
     <link rel="stylesheet" href="../css/formatting.css"/>
     <link rel="icon" type="img/x-icon" href="../other_img/favico.ico">
 </head>
@@ -18,6 +18,48 @@
     <a href="login.html" style="float: right">Belépés</a>
     <a href="cart.html" style="float: right">Kosár</a>
 </nav>
+<div class="wrapper-div">
+    <div class="cart-box">
+        <section class="cart-item">
+        <table>
+            <tr>
+                <td>Balta</td>
+                <td>80000Ft</td>
+            </tr>
+            <tr>
+                <td>Kerti kesztyű</td>
+                <td>2000Ft</td>
+            </tr>
+        </table>
+        </section>
+        <br>
+        <br>
+        <section class="cart-item">
+        <table>
+            <tr>
+                <td>Összesen</td>
+                <td>10000Ft</td>
+            </tr>
+            <tr>
+                <td>Szállítási költség</td>
+                <td>1600Ft</td>
+            </tr>
+        </table>
+        </section>
+        <div class="cart-right-side">
+            <table>
+                <tr>
+                    <td>Végösszeg</td>
+                    <td>11600</td>
+                </tr>
+            </table>
+            <button onclick="alert('Sikeres megrendelés, köszönjük!')" id="order-button" type="submit">Megrendelés!</button>
+        </div>
+    </div>
+
+</div>
+
+
 
 </body>
 </html>
