@@ -192,3 +192,9 @@ h2 {
     scale: 1;
     border-radius: 15px;
 }
+
+@media print {
+    nav {
+        display: none;
+    }
+}
