@@ -228,3 +228,10 @@ h2 {
 .cart-table-formatting-div{
     margin-left: 15px;
 }
+
+@media print {
+    nav {
+        display: none;
+    }
+}
+
