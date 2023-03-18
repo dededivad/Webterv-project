@@ -65,16 +65,19 @@ nav #logo:hover {
     box-sizing: border-box;
 }
 
-/*
 .log-fs {
+    /*
     width: 100px;
     height: 115px;
     margin: 0;
+
+     */
+    border-radius: 10px;
 }
- */
 
 .log-lb {
     display: flex;
+    align-items: center;
     /*
     width: 150px;
     justify-content: right;
@@ -94,6 +97,7 @@ nav #logo:hover {
     width: 300px;
     height: 400px;
     margin: 0;
+    border-radius: 10px;
 }
 
 .reg-lb {
@@ -117,7 +121,7 @@ p {
     border-radius: 4px;
     font-size: 14px;
     cursor: pointer;
-    width: 147px;
+    width: 52%;
     height: 20px;
 }
 
