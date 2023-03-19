@@ -56,10 +56,6 @@ nav #logo:hover {
     transform: translateX(-100%);
     animation: slideIn 1.5s ease forwards, fadeIn 1.5s ease forwards;
 }
-.item-image {
-    height:120px;
-    width:120px;
-}
 
 .authentication-form {
     display: inline-block;
