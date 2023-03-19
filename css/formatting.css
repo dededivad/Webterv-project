@@ -51,7 +51,11 @@ nav #logo:hover {
     border: 3px solid rgba(60, 179, 113, 0.5);
     border-radius: 5px;
 }
-
+.item p{
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 1.5s ease forwards, fadeIn 1.5s ease forwards;
+}
 .item-image {
     height:120px;
     width:120px;
@@ -152,6 +156,9 @@ h2 {
     display: block;
     margin-top: 0;
     margin-bottom: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 1.5s ease forwards, fadeIn 1.5s ease forwards;
 }
 
 .map-wrapper{
@@ -174,6 +181,8 @@ h2 {
     cursor: pointer;
     user-select: none;
     border-radius: 15px;
+    opacity: 0;
+    animation: fadeIn 5.5s ease forwards;
 }
 .modal {
     position: fixed;
@@ -251,7 +260,6 @@ h2 {
     }
 }
 
-
 #order-button {
     font-size: 2.2em;
     padding: 20px 30px;
@@ -271,5 +279,11 @@ h2 {
     }
     to {
         opacity: 1;
+    }
+}
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
