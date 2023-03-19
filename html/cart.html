@@ -26,7 +26,7 @@
         <table>
             <tr>
                 <td>Balta</td>
-                <td style="font-style: italic;">80000Ft</td>
+                <td style="font-style: italic;">8000Ft</td>
             </tr>
             <tr>
                 <td>Kerti kesztyű</td>
@@ -55,23 +55,11 @@
             <button onclick="alert('Sikeres megrendelés, köszönjük!')" id="order-button" type="submit">Megrendelés!</button>
         </div>
     </div>
-    <button onclick="playVideo()">Nemtudod mire használd a szerszámaidat?</button>
-    <div id="video-container" style="display:none;">
-        <div class="video-overlay"></div>
-        <video controls>
-            <source src="../videos/metszoollo.mp4" type="video/mp4">
-        </video>
+
+    <div class="video-wrapper">
+        <p style="font-weight: bold; font-size: 26.5px">Nem tudod mire használd a szerszámodat?</p>
+        <video src="../videos/metszoollo.mp4" controls></video>
     </div>
-
-    <script>
-        function playVideo() {
-            var videoContainer = document.getElementById("video-container");
-            var overlay = videoContainer.querySelector(".overlay");
-            videoContainer.style.display = "block";
-            overlay.style.display = "block";
-        }
-    </script>
-
 </div>
 </body>
 </html>
