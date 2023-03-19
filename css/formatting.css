@@ -37,6 +37,8 @@ nav #logo:hover {
 
 #itemContainer {
     margin-top: 100px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
 }
 
 .item {
@@ -91,6 +93,8 @@ nav #logo:hover {
     align-items: center;
     display: flex;
     justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
 }
 
 .reg-fs {
@@ -157,6 +161,8 @@ h2 {
     align-items: center;
     height: 100vh;
     margin-bottom: 0;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
 }
 .contact-info p {
     margin: 5px;
@@ -196,28 +202,38 @@ h2 {
 .cart-box{
     display: inline-block;
     position: relative;
-    margin-right: 20%;
+    margin-right: 5%;
     margin-left: 5%;
     width: 100%;
     text-align: center;
     padding: 0;
     box-sizing: border-box;
-    border: solid black 2px;
+    border: solid #2596be 2px;
+    background-image: url("../other_img/cart-background.png");
+    background-size: 100% 100%;
+    border-radius: 15px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
 }
 .cart-right-side{
     position: absolute;
-    top: 40%;
-    right: 0;
+    top: 50%;
+    right: 0%;
     transform: translate(-50%, -50%);
+    background: rgba(4, 255, 255, 1);
+    border-radius: 5px;
+    padding: 15px 25px;
 }
 .cart-item table tr {
     border: 2px solid rgba(60, 179, 113, 0.5);
     border-radius: 5px;
+    background: rgba(4, 255, 255, 1);
 }
 .cart-item table td {
     border: 2px solid rgba(60, 179, 113, 0.5);
     padding: 25px;
     border-radius: 5px;
+    background: rgba(4, 255, 255, 1);
 
 }
 .cart-item table {
@@ -235,3 +251,25 @@ h2 {
     }
 }
 
+
+#order-button {
+    font-size: 2.2em;
+    padding: 20px 30px;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#order-button:hover {
+    background-color: royalblue;
+    border: 1px solid dodgerblue;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
