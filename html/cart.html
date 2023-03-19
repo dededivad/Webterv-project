@@ -55,6 +55,22 @@
             <button onclick="alert('Sikeres megrendelés, köszönjük!')" id="order-button" type="submit">Megrendelés!</button>
         </div>
     </div>
+    <button onclick="playVideo()">Nemtudod mire használd a szerszámaidat?</button>
+    <div id="video-container" style="display:none;">
+        <div class="video-overlay"></div>
+        <video controls>
+            <source src="../videos/metszoollo.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        function playVideo() {
+            var videoContainer = document.getElementById("video-container");
+            var overlay = videoContainer.querySelector(".overlay");
+            videoContainer.style.display = "block";
+            overlay.style.display = "block";
+        }
+    </script>
 
 </div>
 </body>
