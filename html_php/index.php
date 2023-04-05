@@ -7,18 +7,8 @@
     <link rel="stylesheet" href="../css/formatting.css"/>
     <link rel="icon" type="img/x-icon" href="../other_img/favico.ico"/>
 </head>
-
 <body>
-<nav style="top: 0;z-index: 1000;">
-    <a href="index.html" id="logo">
-        <img src="../other_img/favico.ico" alt="DD Logo" height="100" width="130">
-    </a>
-    <a href="index.html">Kezdőlap</a>
-    <a href="contacts.html">Kapcsolat</a>
-    <a href="registration.html" style="float: right">Regisztáció</a>
-    <a href="login.html" style="float: right">Belépés</a>
-    <a href="cart.html" style="float: right">Kosár</a>
-</nav>
+<?php include_once('navbar.php')?>
 <main id="itemContainer">
     <section class="item">
         <table>

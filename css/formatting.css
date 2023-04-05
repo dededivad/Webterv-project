@@ -77,16 +77,11 @@ nav #logo:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*
-    width: 150px;
-    justify-content: right;
-    margin-right: 5px;
-    margin-left: 10px;
-     */
 }
 
 .wrapper-div {
-    height: 700px;
+    height: 440px;
+    margin-top: 110px;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -317,4 +312,10 @@ video {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.error-msg {
+    text-align: center;
+    color: red;
+    font-weight: bold;
 }
