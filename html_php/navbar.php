@@ -1,16 +1,6 @@
 <?php
 session_start();
 ?>
-
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <!--
-    <meta charset="UTF-8">
-    <title>you shouldn't see this</title>
-    -->
-</head>
-<body>
 <?php
 echo '<nav style="top: 0;z-index: 1000;">
     <a href="index.php" id="logo">
@@ -29,5 +19,3 @@ echo '<nav style="top: 0;z-index: 1000;">
           </nav>';
     }
 ?>
-</body>
-</html>
