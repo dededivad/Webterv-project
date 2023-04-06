@@ -99,7 +99,7 @@ if (isset($_POST["register"])) {
             <legend>Regisztráció</legend>
             <label class="reg-lb">Felhasználónév:* <input value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" type="text" name="username" maxlength="20"
                                                           required/></label> <br/>
-            <label class="reg-lb">Jelszó:* <input type="password" name="password_first" maxlength="20" required/></label> <br/>
+            <label class="reg-lb">Jelszó:*<span class="tooltip" id="password">?</span><input type="password" name="password_first" maxlength="20" required/></label> <br/>
             <label class="reg-lb">Jelszó újra:* <input type="password" name="password_second" maxlength="20" required/></label> <br/>
             <label class="reg-lb">Email:* <input value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" type="email" name="email" placeholder="pl.: valaki@gmail.com" required/></label>
             <br/>
