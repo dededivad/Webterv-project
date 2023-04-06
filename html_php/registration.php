@@ -9,8 +9,9 @@ if (isset($_POST["register"])) {
     if (!isset($_POST["username"]) || trim($_POST["username"]) === "")
         $errors[] = "A felhasználónév megadása kötelező!";
 
-    if (!isset($_POST["password"]) || trim($_POST["password"]) === "")
-        $errors[] = "A jelszó megadása kötelező!";
+    if (!isset($_POST["password_first"]) || trim($_POST["password_first"]) === "" ||
+        !isset($_POST["password_second"]) || trim($_POST["password_second"]) === "")
+        $errors[] = "A jelszó és az ellenőrző jelszó megadása kötelező!";
 
     if (!isset($_POST["email"]) || trim($_POST["email"]) === "")
         $errors[] = "Az email megadása kötelező!";
@@ -28,7 +29,8 @@ if (isset($_POST["register"])) {
         $errors[] = "A lakcím megadása kötelező!";
 
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password_first = $_POST["password_first"];
+    $password_second = $_POST["password_second"];
     $email = $_POST["email"];
     $full_name = $_POST["full_name"];
     $postal_code = $_POST["postal_code"];
@@ -49,8 +51,11 @@ if (isset($_POST["register"])) {
             $errors[] = "A felhasználónév már foglalt!";
     }
 
+    if ($password_first !== $password_second)
+        $errors[] = "A jelszó és az ellenőrző jelszó nem egyezik!";
 
-    if (strlen($password) < 5)
+
+    if (strlen($password_first) < 5 || strlen($password_second) < 5)
         $errors[] = "A jelszónak legalább 5 karakter hosszúnak kell lennie!";
 
 
@@ -63,7 +68,7 @@ if (isset($_POST["register"])) {
 
 
     if (count($errors) === 0) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        $password = password_hash($password_first, PASSWORD_DEFAULT);
         $profiles[] = ["username" => $username, "password" => $password, "email" => $email, "full_name" => $full_name,
             "postal_code" => $postal_code, "city" => $city, "street_name" => $street_name, "phone_number" => $phone_number,
             "profile_pic" => $profile_pic];
@@ -77,7 +82,7 @@ if (isset($_POST["register"])) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <title>DD Regisztráció</title>
     <meta charset="UTF-8">
@@ -94,7 +99,8 @@ if (isset($_POST["register"])) {
             <legend>Regisztráció</legend>
             <label class="reg-lb">Felhasználónév:* <input value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" type="text" name="username" maxlength="20"
                                                           required/></label> <br/>
-            <label class="reg-lb">Jelszó:* <input type="password" name="password" maxlength="20" required/></label> <br/>
+            <label class="reg-lb">Jelszó:* <input type="password" name="password_first" maxlength="20" required/></label> <br/>
+            <label class="reg-lb">Jelszó újra:* <input type="password" name="password_second" maxlength="20" required/></label> <br/>
             <label class="reg-lb">Email:* <input value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" type="email" name="email" placeholder="pl.: valaki@gmail.com" required/></label>
             <br/>
             <label class="reg-lb">Teljes név:* <input value="<?php if (isset($_POST['full_name'])) echo $_POST['full_name']; ?>" type="text" name="full_name" required/></label> <br/>
@@ -118,7 +124,7 @@ if (isset($success) && $success === TRUE) {
     header("Location: login.php");
 } else {
     foreach ($errors as $error) {
-        echo "<p class='error-msg'>" . $error . "</p>";
+        echo "<br><p class='error-msg'>" . $error . "</p>";
     }
 }
 ?>

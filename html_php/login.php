@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "authentication.php";
 $profiles = loadUsers("../data/users.txt");
 
@@ -6,7 +7,7 @@ $message = "";
 
 if (isset($_POST["login"])) {
     if (!isset($_POST["username"]) || trim($_POST["username"]) === "" || !isset($_POST["password"]) || trim($_POST["password"]) === "") {
-        $message = "Hiba: Adj meg minden adatot";
+        $message = "Hiba: Adj meg minden adatot!";
     } else {
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -16,6 +17,7 @@ if (isset($_POST["login"])) {
         foreach ($profiles as $profile) {
            if ($profile["username"] === $username && password_verify($password, $profile["password"])) {
                echo "Sikeres belépés";
+               $_SESSION["user"] = $profile;
                header("Location: index.php");
                break;
             }
@@ -25,7 +27,7 @@ if (isset($_POST["login"])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
