@@ -20,20 +20,84 @@
         <p style="font-weight: bold">Email:ddtoolsinfo@ddtools.com</p>
     </div>
 </div>
+<?php
+if(isset($_POST['chat-input'])){
+    $message = $_POST['chat-input'];
+    $file = fopen('chat_data.txt', 'a');
+    fwrite($file, $message . PHP_EOL);
+    fclose($file);
+}
+?>
+<!-- Chat button -->
+<div class="chat-btn">
+    <p id="chat-button-msg" style="font-weight: bold; font-size: 20px">Chat ablak</p>
+    <button id="chat-toggle-btn"></button>
+</div>
+
+<!-- Chat window -->
+<div class="chat-window">
+    <div class="chat-header">
+        <h3>Chat</h3>
+        <button id="chat-close-btn"></button>
+    </div>
+    <div class="chat-body">
+        <!-- Chat messages will be displayed here -->
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Írd be az üzeneted, majd kattints a gombra!">
+        <button id="chat-send-btn"></button>
+    </div>
+</div>
+
 <script>
     const image = document.querySelector('.maps img');
     const modal = document.createElement('div');
     modal.classList.add('modal');
-    modal.addEventListener('click', () => {
+    modal.addEventListener('click', function() {
         modal.classList.remove('show');
     });
 
-    image.addEventListener('click', () => {
-        modal.innerHTML = `<img src="${image.src}" alt="Location on Google Maps">`;
+    image.addEventListener('click', function() {
+        modal.innerHTML = '<img src="' + image.src + '" alt="Location on Google Maps">';
         modal.classList.add('show');
     });
 
     document.body.appendChild(modal);
+
+    // CHAT WINDOW
+    const chatBtn = document.querySelector('.chat-btn');
+    const chatWindow = document.querySelector('.chat-window');
+    const chatToggleBtn = document.querySelector('#chat-toggle-btn');
+    const chatCloseBtn = document.querySelector('#chat-close-btn');
+    const chatButtonMsg = document.querySelector('#chat-button-msg');
+
+    // Show chat window when chat button is clicked
+    chatBtn.addEventListener('click', function() {
+        chatWindow.style.display = 'block';
+        chatButtonMsg.style.display = 'none'; // hide chat button message
+    });
+
+    // Hide chat window when close button is clicked
+    chatCloseBtn.addEventListener('click', function() {
+        chatWindow.style.display = 'none';
+        chatButtonMsg.style.display = 'block'; // show chat button message
+    });
+
+    // Toggle chat window when toggle button is clicked
+    chatToggleBtn.addEventListener('click', function() {
+        chatWindow.classList.toggle('show');
+        chatButtonMsg.style.display = 'none'; // hide chat button message
+    });
+    //repeater
+    const chatSendBtn = document.querySelector('#chat-send-btn');
+    const chatBody = document.querySelector('.chat-body');
+
+    chatSendBtn.addEventListener('click', () => {
+        const message = document.createElement('div');
+        message.innerHTML = 'Sajnos egyik ügyintézőnk se elérhető!';
+        message.classList.add('left-message');
+        chatBody.appendChild(message);
+    });
 </script>
 </body>
 </html>
