@@ -1,8 +1,27 @@
 <?php
 session_start();
+include "authentication.php";
 
 if (!isset($_SESSION["user"])) {
     header("Location: login.php");
+}
+?>
+
+
+<?php
+
+$profile_pic = "../profile_pics/default.png";
+$path = "../profile_pics/" . $_SESSION["user"]["username"];
+
+$extensions = ["png", "jpg", "jpeg"];
+
+//error_log($path);
+
+foreach ($extensions as $extension) {
+    if (file_exists($path . "." . $extension)) {
+        $profile_pic = $path . "." . $extension;
+        //error_log("masodik".$profile_pic);
+    }
 }
 ?>
 
@@ -20,10 +39,15 @@ if (!isset($_SESSION["user"])) {
     <?php include_once('navbar.php'); ?>
     <section id="content">
         <h2 style="margin-top: 160px">&nbsp;&nbsp;&nbsp;&nbsp;Profilom</h2>
-        <hr style="width: 30%; float: left"/>
+        <hr style="width: 35%; float: left"/>
 
         <?php
         echo "<br>";
+        echo "<div style='display: flex; flex-wrap: nowrap;'>";
+        echo "<div style='flex: 1'>";
+        echo '<img src="' . $profile_pic . '" alt="Profilkép" height="150"/>';
+        echo "</div>";
+        echo "<div style='flex: 10'>";
         echo "<ul>";
         echo "<li>Felhasználónév: " . $_SESSION["user"]["username"] . "</li>";
         echo "<li>Email: " . $_SESSION["user"]["email"] . "</li>";
@@ -38,14 +62,39 @@ if (!isset($_SESSION["user"])) {
             echo ' -';
         }
         echo "</li>";
-        echo "<li>Profilkép: ";
-        if (!($_SESSION["user"]["profile_pic"] === "")) {
-            echo $_SESSION["user"]["profile_pic"];
-        } else {
-            echo ' -';
-        }
-        echo "</li>";
         echo "</ul>";
+        echo "</div>";
+        echo "</div>";
+        echo "</br>";
+        echo "</br>";
+
+        echo '
+        <form action="profile.php" method="POST" enctype="multipart/form-data">
+            <label>
+                Profilkép módosítása:
+                <input type="file" name="profile_pic" accept="image/*" style="opacity: 0">
+                <span class="file-input-button" style="width: 140px;margin-bottom: 5px">Kép kiválasztása</span>
+            </label>
+            <input type="submit" name="upload-btn" value="Elküldés"/>
+        </form>';
+        if (isset($_POST["upload-btn"]) && is_uploaded_file($_FILES["profile_pic"]["tmp_name"])) {
+            $file_upload_error = "";
+            uploadProfilePicture($_SESSION["user"]["username"]);
+
+            $who = strtolower(pathinfo($_FILES["profile_pic"]["name"], PATHINFO_EXTENSION));
+            $path = "../profile_pics/" . $_SESSION["user"]["username"] . "." . $who;
+
+            if ($file_upload_error === "") {
+                if ($path !== $profile_pic && $profile_pic !== "../profile_pics/default.png") {
+                    unlink($profile_pic);
+                }
+
+                header("Location: profile.php");
+            } else {
+                echo "<p>" . $file_upload_error . "</p>";
+            }
+        }
+
         ?>
     </section>
 </main>

@@ -66,12 +66,16 @@ if (isset($_POST["register"])) {
     if (ctype_lower($city[0]))
         $errors[] = "A városneveket nagybetűvel írjuk!";
 
+    $file_upload_error = "";
+    uploadProfilePicture($username);
+
+    if ($file_upload_error !== "")
+        $errors[] = $file_upload_error;
 
     if (count($errors) === 0) {
         $password = password_hash($password_first, PASSWORD_DEFAULT);
         $profiles[] = ["username" => $username, "password" => $password, "email" => $email, "full_name" => $full_name,
-            "postal_code" => $postal_code, "city" => $city, "street_name" => $street_name, "phone_number" => $phone_number,
-            "profile_pic" => $profile_pic];
+            "postal_code" => $postal_code, "city" => $city, "street_name" => $street_name, "phone_number" => $phone_number, "admin" => False];
         saveUsers($path, $profiles);
         $success = TRUE;
     } else {
@@ -94,7 +98,7 @@ if (isset($_POST["register"])) {
 <body>
 <?php include_once('navbar.php')?>
 <div class="wrapper-div">
-    <form class="authentication-form" method="POST" action="registration.php">
+    <form class="authentication-form" method="POST" action="registration.php" enctype="multipart/form-data">
         <fieldset class="reg-fs">
             <legend>Regisztráció</legend>
             <label class="reg-lb">Felhasználónév:* <input value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" type="text" name="username" maxlength="20"
@@ -110,7 +114,7 @@ if (isset($_POST["register"])) {
             <label class="reg-lb">Telefonszám: <input value="<?php if (isset($_POST['phone_number'])) echo $_POST['phone_number']; ?>" type="tel" name="phone_number"/></label> <br/>
             <label class="reg-lb">
                 Profilkép:
-                <input type="file" value="<?php if (isset($_POST['profile_pic'])) echo $_POST['profile_pic']; ?>" name="profile_pic" style="opacity: 0; position: absolute; left: -9999px;">
+                <input type="file" name="profile_pic" accept="image/*" style="opacity: 0; position: absolute; left: -9999px;">
                 <span class="file-input-button">Kép kiválasztása</span>
             </label>
             <br>
