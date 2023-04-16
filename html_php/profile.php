@@ -67,7 +67,7 @@ foreach ($extensions as $extension) {
         echo "</div>";
         echo "</div>";
         //echo "</br>";
-        echo "</br>";
+        echo "<br>";
 
         echo '
         <div style="display: flex;">
@@ -102,15 +102,15 @@ foreach ($extensions as $extension) {
         echo '<div>
            <form action="profile_change.php" method="POST">
       
-            <legend style="text-align: center">Profil adatainak módosítása:</legend>
+            <p style="text-align: center; margin-bottom: 0; margin-top: 0">Profil adatainak módosítása:</p>
             <br>
             <label class="reg-lb">Email:* <input value="'.$_SESSION["user"]['email'].'" type="email" name="email" placeholder="pl.: valaki@gmail.com" required/></label>
-            <br/>
-            <label class="reg-lb">Teljes név:* <input value="'.$_SESSION["user"]['full_name'].'" type="text" name="full_name" required/></label> <br/>
-            <label class="reg-lb">Irányítószám:* <input value="'.$_SESSION["user"]['postal_code'].'" type="number" min="1000" name="postal_code" required/></label> <br/>
-            <label class="reg-lb">Település:* <input value="'.$_SESSION["user"]['city'].'" type="text" name="city" required/></label> <br/>
-            <label class="reg-lb">Lakcím:* <input value="'.$_SESSION["user"]['street_name'].'" type="text" name="street_name" required/></label> <br/>
-            <label class="reg-lb">Telefonszám: <input value="'.$_SESSION["user"]['phone_number'].'" type="tel" name="phone_number"/></label> <br/>
+            <br>
+            <label class="reg-lb">Teljes név:* <input value="'.$_SESSION["user"]['full_name'].'" type="text" name="full_name" required/></label> <br>
+            <label class="reg-lb">Irányítószám:* <input value="'.$_SESSION["user"]['postal_code'].'" type="number" min="1000" name="postal_code" required/></label> <br>
+            <label class="reg-lb">Település:* <input value="'.$_SESSION["user"]['city'].'" type="text" name="city" required/></label> <br>
+            <label class="reg-lb">Lakcím:* <input value="'.$_SESSION["user"]['street_name'].'" type="text" name="street_name" required/></label> <br>
+            <label class="reg-lb">Telefonszám: <input value="'.$_SESSION["user"]['phone_number'].'" type="tel" name="phone_number"/></label> <br>
             <input type="submit" name="edit" value="Módosítás" style="margin-left: 100px"/>
         </form>
         </div>';
@@ -118,8 +118,10 @@ foreach ($extensions as $extension) {
         </div>
         <br><br><br>
         <form action="profile.php" method="POST" enctype="multipart/form-data">
-            <label>
-                <p style="margin: 0px">Profil törlése</p> <p style="color: red; font-weight: bold; margin: 0px">(NEM FOGOD TUDNI VISSZAÁLLÍTANI, BIZTOS TÖRLÖD?)</p>
+            <label style="margin: 0;color: red; font-weight: bold">
+               Profil törlése
+               <br>
+               (NEM FOGOD TUDNI VISSZAÁLLÍTANI, BIZTOS TÖRLÖD?)
             </label>
             <input type="submit" name="delete-btn" style="background-color: red" value="Törlés"/>
         </form>';
