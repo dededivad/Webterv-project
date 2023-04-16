@@ -80,9 +80,16 @@
 
     chatSendBtn.addEventListener('click', () => {
         const message = document.createElement('div');
-        message.innerHTML = 'Sajnos egyik ügyintézőnk se elérhető!';
+        message.innerHTML = 'Sajnos egyik ügyintézőnk se elérhető, írj e-mailt, és 2 munkanapon belűl válaszolunk! Leírt üzenetedet csatoljuk egy file-ban, ezt kérlek mentsd le, és csatold az emailhez!';
         message.classList.add('left-message');
         chatBody.appendChild(message);
+
+        const chatLog = document.getElementById('chat-input').value;
+        const downloadLink = document.createElement('a');
+        const file = new Blob([chatLog], {type: 'text/plain'});
+        downloadLink.href = URL.createObjectURL(file);
+        downloadLink.download = 'chat_log.txt';
+        downloadLink.click();
     });
 </script>
 </body>

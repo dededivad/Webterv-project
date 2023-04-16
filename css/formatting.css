@@ -350,6 +350,7 @@ video {
     color: red;
     font-weight: bold;
 }
+
 .chat-btn {
     position: fixed;
     bottom: 20px;
@@ -381,6 +382,7 @@ video {
     background-color: white;
     z-index: 9998;
     overflow: hidden;
+    overflow-y: auto;
 }
 
 .chat-header {
