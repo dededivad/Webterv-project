@@ -2,6 +2,7 @@
 session_start();
 include "authentication.php";
 
+
 if (!isset($_SESSION["user"])) {
     header("Location: login.php");
 }
@@ -45,7 +46,7 @@ foreach ($extensions as $extension) {
         echo "<br>";
         echo "<div style='display: flex; flex-wrap: nowrap;'>";
         echo "<div style='flex: 1'>";
-        echo '<img src="' . $profile_pic . '" alt="Profilkép" height="150"/>';
+        echo '<img src="' . $profile_pic . '" alt="Profilkép" width="200"/>';
         echo "</div>";
         echo "<div style='flex: 10'>";
         echo "<ul>";
@@ -65,18 +66,22 @@ foreach ($extensions as $extension) {
         echo "</ul>";
         echo "</div>";
         echo "</div>";
-        echo "</br>";
+        //echo "</br>";
         echo "</br>";
 
         echo '
+        <div style="display: flex;">
+        <div style="width: 200px;">
         <form action="profile.php" method="POST" enctype="multipart/form-data">
             <label>
                 Profilkép módosítása:
-                <input type="file" name="profile_pic" accept="image/*" style="opacity: 0">
+                <input type="file" name="profile_pic" accept="image/*" style="opacity: 0; width: 200px">
                 <span class="file-input-button" style="width: 140px;margin-bottom: 5px">Kép kiválasztása</span>
             </label>
             <input type="submit" name="upload-btn" value="Módosítás"/>
-        </form>';
+        </form>
+        </div>';
+
         if (isset($_POST["upload-btn"]) && is_uploaded_file($_FILES["profile_pic"]["tmp_name"])) {
             $file_upload_error = "";
             uploadProfilePicture($_SESSION["user"]["username"]);
@@ -94,12 +99,29 @@ foreach ($extensions as $extension) {
                 echo "<p>" . $file_upload_error . "</p>";
             }
         }
+        echo '<div>
+           <form action="profile_change.php" method="POST">
+      
+            <legend style="text-align: center">Profil adatainak módosítása:</legend>
+            <br>
+            <label class="reg-lb">Email:* <input value="'.$_SESSION["user"]['email'].'" type="email" name="email" placeholder="pl.: valaki@gmail.com" required/></label>
+            <br/>
+            <label class="reg-lb">Teljes név:* <input value="'.$_SESSION["user"]['full_name'].'" type="text" name="full_name" required/></label> <br/>
+            <label class="reg-lb">Irányítószám:* <input value="'.$_SESSION["user"]['postal_code'].'" type="number" min="1000" name="postal_code" required/></label> <br/>
+            <label class="reg-lb">Település:* <input value="'.$_SESSION["user"]['city'].'" type="text" name="city" required/></label> <br/>
+            <label class="reg-lb">Lakcím:* <input value="'.$_SESSION["user"]['street_name'].'" type="text" name="street_name" required/></label> <br/>
+            <label class="reg-lb">Telefonszám: <input value="'.$_SESSION["user"]['phone_number'].'" type="tel" name="phone_number"/></label> <br/>
+            <input type="submit" name="edit" value="Módosítás" style="margin-left: 100px"/>
+        </form>
+        </div>';
         echo '
+        </div>
+        <br><br><br>
         <form action="profile.php" method="POST" enctype="multipart/form-data">
             <label>
                 <p style="margin: 0px">Profil törlése</p> <p style="color: red; font-weight: bold; margin: 0px">(NEM FOGOD TUDNI VISSZAÁLLÍTANI, BIZTOS TÖRLÖD?)</p>
             </label>
-            <input type="submit" name="delete-btn" value="Törlés"/>
+            <input type="submit" name="delete-btn" style="background-color: red" value="Törlés"/>
         </form>';
         if (isset($_POST["delete-btn"])) {
             $username = $_SESSION["user"]["username"];
@@ -118,7 +140,7 @@ foreach ($extensions as $extension) {
                     unlink($profile_pic . "." . $extension);
                 }
             }
-            header("Location: logout.php"); //PUSH COMMENT
+            header("Location: logout.php");
             exit();
         }
         ?>

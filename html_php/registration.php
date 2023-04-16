@@ -38,12 +38,9 @@ if (isset($_POST["register"])) {
     $street_name = $_POST["street_name"];
 
     $phone_number = NULL;
-    $profile_pic = NULL;
 
     if (isset($_POST["phone_number"]))
         $phone_number = $_POST["phone_number"];
-    if (isset($_POST["profile_pic"]))
-        $profile_pic = $_POST["profile_pic"];
 
 
     foreach ($profiles as $profile) {
