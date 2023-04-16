@@ -118,7 +118,7 @@ foreach ($extensions as $extension) {
                     unlink($profile_pic . "." . $extension);
                 }
             }
-            header("Location: logout.php");
+            header("Location: logout.php"); //PUSH COMMENT
             exit();
         }
         ?>
