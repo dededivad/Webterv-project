@@ -123,7 +123,7 @@ foreach ($extensions as $extension) {
                <br>
                (NEM FOGOD TUDNI VISSZAÁLLÍTANI, BIZTOS TÖRLÖD?)
             </label>
-            <input type="submit" name="delete-btn" style="background-color: red" value="Törlés"/>
+            <input type="submit" name="delete-btn" style="background-color: red; cursor: pointer; border-radius: 3px" value="Törlés"/>
         </form>';
         if (isset($_POST["delete-btn"])) {
             $username = $_SESSION["user"]["username"];

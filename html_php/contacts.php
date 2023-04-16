@@ -29,11 +29,12 @@
 <div class="chat-window">
     <div class="chat-header">
         <h3>Chat</h3>
+        <p>(Ablak bezárása a kis ikonnal):</p>
         <button id="chat-close-btn"></button>
     </div>
     <div class="chat-body">
     </div>
-    <div class="chat-footer">
+    <div class="chat-messages-window">
         <input type="text" id="chat-input" placeholder="Írd be az üzeneted, majd kattints a gombra!">
         <button id="chat-send-btn" value="Küldés"></button>
     </div>
