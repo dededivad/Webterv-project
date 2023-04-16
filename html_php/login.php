@@ -12,7 +12,7 @@ if (isset($_POST["login"])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $message = "Sikertelen belépés! A belépési adatok nem megfelelők!";
+        $message = "Sikertelen belépés! A belépési adatok nem megfelelők!(Biztos regisztráltál már?)";
 
         foreach ($profiles as $profile) {
            if ($profile["username"] === $username && password_verify($password, $profile["password"])) {
