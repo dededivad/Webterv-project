@@ -350,9 +350,6 @@ video {
     color: red;
     font-weight: bold;
 }
-
-
-/* Chat  */
 .chat-btn {
     position: fixed;
     bottom: 20px;

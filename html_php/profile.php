@@ -75,7 +75,7 @@ foreach ($extensions as $extension) {
                 <input type="file" name="profile_pic" accept="image/*" style="opacity: 0">
                 <span class="file-input-button" style="width: 140px;margin-bottom: 5px">Kép kiválasztása</span>
             </label>
-            <input type="submit" name="upload-btn" value="Elküldés"/>
+            <input type="submit" name="upload-btn" value="Módosítás"/>
         </form>';
         if (isset($_POST["upload-btn"]) && is_uploaded_file($_FILES["profile_pic"]["tmp_name"])) {
             $file_upload_error = "";
@@ -94,7 +94,33 @@ foreach ($extensions as $extension) {
                 echo "<p>" . $file_upload_error . "</p>";
             }
         }
-
+        echo '
+        <form action="profile.php" method="POST" enctype="multipart/form-data">
+            <label>
+                <p style="margin: 0px">Profil törlése</p> <p style="color: red; font-weight: bold; margin: 0px">(NEM FOGOD TUDNI VISSZAÁLLÍTANI, BIZTOS TÖRLÖD?)</p>
+            </label>
+            <input type="submit" name="delete-btn" value="Törlés"/>
+        </form>';
+        if (isset($_POST["delete-btn"])) {
+            $username = $_SESSION["user"]["username"];
+            $file = "../data/users.txt";
+            $lines = file($file);
+            foreach ($lines as $lineNumber => $lineContent) {
+                if (strpos($lineContent, $username) !== false) {
+                    unset($lines[$lineNumber]);
+                    break;
+                }
+            }
+            file_put_contents($file, implode('', $lines));
+            $profile_pic = "../profile_pics/" . $username;
+            foreach ($extensions as $extension) {
+                if (file_exists($profile_pic . "." . $extension)) {
+                    unlink($profile_pic . "." . $extension);
+                }
+            }
+            header("Location: logout.php");
+            exit();
+        }
         ?>
     </section>
 </main>

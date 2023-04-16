@@ -20,32 +20,22 @@
         <p style="font-weight: bold">Email:ddtoolsinfo@ddtools.com</p>
     </div>
 </div>
-<?php
-if(isset($_POST['chat-input'])){
-    $message = $_POST['chat-input'];
-    $file = fopen('chat_data.txt', 'a');
-    fwrite($file, $message . PHP_EOL);
-    fclose($file);
-}
-?>
-<!-- Chat button -->
+
 <div class="chat-btn">
     <p id="chat-button-msg" style="font-weight: bold; font-size: 20px">Chat ablak</p>
     <button id="chat-toggle-btn"></button>
 </div>
 
-<!-- Chat window -->
 <div class="chat-window">
     <div class="chat-header">
         <h3>Chat</h3>
         <button id="chat-close-btn"></button>
     </div>
     <div class="chat-body">
-        <!-- Chat messages will be displayed here -->
     </div>
     <div class="chat-footer">
         <input type="text" id="chat-input" placeholder="Írd be az üzeneted, majd kattints a gombra!">
-        <button id="chat-send-btn"></button>
+        <button id="chat-send-btn" value="Küldés"></button>
     </div>
 </div>
 
@@ -64,31 +54,27 @@ if(isset($_POST['chat-input'])){
 
     document.body.appendChild(modal);
 
-    // CHAT WINDOW
     const chatBtn = document.querySelector('.chat-btn');
     const chatWindow = document.querySelector('.chat-window');
     const chatToggleBtn = document.querySelector('#chat-toggle-btn');
     const chatCloseBtn = document.querySelector('#chat-close-btn');
     const chatButtonMsg = document.querySelector('#chat-button-msg');
 
-    // Show chat window when chat button is clicked
     chatBtn.addEventListener('click', function() {
         chatWindow.style.display = 'block';
-        chatButtonMsg.style.display = 'none'; // hide chat button message
+        chatButtonMsg.style.display = 'none';
     });
 
-    // Hide chat window when close button is clicked
     chatCloseBtn.addEventListener('click', function() {
         chatWindow.style.display = 'none';
-        chatButtonMsg.style.display = 'block'; // show chat button message
+        chatButtonMsg.style.display = 'block';
     });
 
-    // Toggle chat window when toggle button is clicked
     chatToggleBtn.addEventListener('click', function() {
         chatWindow.classList.toggle('show');
-        chatButtonMsg.style.display = 'none'; // hide chat button message
+        chatButtonMsg.style.display = 'none';
     });
-    //repeater
+
     const chatSendBtn = document.querySelector('#chat-send-btn');
     const chatBody = document.querySelector('.chat-body');
 

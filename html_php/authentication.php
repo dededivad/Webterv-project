@@ -1,32 +1,30 @@
 <?php
-// Function responsible for loading registered users from a file
-
 function loadUsers($path) {
-    $users = [];                  // This array will contain the registered users
+    $users = [];  // user arrays
 
-    $file = fopen($path, "r");    // Open file for reading
-    if ($file === FALSE)          // Error handling
+    $file = fopen($path, "r");
+    if ($file === FALSE) //ijj itt lesz e error leci ne
         die("HIBA: A fájl megnyitása nem sikerült! 1");
 
     while (($line = fgets($file)) !== FALSE) {  // Read file line by line
-        $user = unserialize($line);  // Deserialize the line (convert it back into an associative array representing the user)
-        $users[] = $user;            // Add the user to the array of registered users
+        $user = unserialize($line);
+        $users[] = $user;// add the user to an array which contains the registered users
     }
 
     fclose($file);
-    return $users;                 // Return the 2D array containing the users
+    return $users;
 }
 
-// Function responsible for writing the data of registered users to a file
+// datawriting
 
 function saveUsers($path, $users) {
-    $file = fopen($path, "w");    // Open file for writing
-    if ($file === FALSE)          // Error handling
+    $file = fopen($path, "w");
+    if ($file === FALSE) //ijj itt lesz e error leci ne
         die("HIBA: A fájl megnyitása nem sikerült! 2");
 
-    foreach($users as $user) {    // Loop through the array of registered users
-        $serialized_user = serialize($user);      // Convert the user into serialized format
-        fwrite($file, $serialized_user . "\n");   // Write the serialized data to the output file
+    foreach($users as $user) {
+        $serialized_user = serialize($user); //previously deserialised data converted back to serialised data, so we can store it
+        fwrite($file, $serialized_user . "\n");
     }
 
     fclose($file);
@@ -63,4 +61,9 @@ function uploadProfilePicture($username) {
             $file_upload_error = "A fájl kiterjesztése nem megfelelő!";
         }
     }
+}
+function removeLineFromFile($filename, $lineToRemove) {
+    $contents = file_get_contents($filename);
+    $contents = str_replace($lineToRemove, '', $contents);
+    file_put_contents($filename, $contents);
 }
